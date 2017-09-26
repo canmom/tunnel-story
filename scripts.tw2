@@ -1,0 +1,38 @@
+::linebyline [script]
+window.story.state.linebyline = (lines) => {
+    const prompt = $(".prompt");
+    prompt.on("click", function() {
+        if (lines.length > 0) {
+            const line = lines.shift();
+            const newPara = $(Passage.render(line.text));
+            if (line.after) {
+                prompt.after(newPara);
+            } else {
+                prompt.before(newPara);
+            }
+
+            if (line.promptnext) {
+                prompt.text(lines[0].text)
+            } else if (line.prompt) {
+                prompt.text(line.prompt);
+            }
+            
+            if (lines.length == 0) {
+                prompt.off("click");
+                prompt.removeClass("prompt");
+            }
+        }
+    });
+}
+
+::transitions [script]
+$('#passage').on('click', 'a[data-passage]', function(e) {
+    var destination = $(e.target).data('passage');
+        
+    $('#passage').fadeOut('fast', function() {
+        story.show(destination);
+        $('#passage').fadeIn('fast');
+    });
+    
+    e.stopPropagation();
+});

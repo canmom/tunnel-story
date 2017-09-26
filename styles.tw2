@@ -1,0 +1,20 @@
+::mainstyle [stylesheet]
+body {
+    font-family: "Linux Biolinum", serif;
+    background-color: #312;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+}
+
+a, .prompt {
+    color: #F79;
+    text-decoration: none;
+    font-weight: bold;
+    border: 0;
+}
+
+a:hover, .prompt:hover {
+    color: #FBD;
+    text-shadow: 0 0 2px #FBD;
+}
