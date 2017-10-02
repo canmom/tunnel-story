@@ -28,7 +28,7 @@ window.story.state.linebyline = (passage,promptsmarked) => {
                         linesToShow.push(nextLine);
                     }
                 } else {
-                    //turn the prompt into ordinary text
+                    //turn the final prompt into ordinary text
                     $("<p>"+$('#prompt').text()+"</p>").insertBefore(linesToShow[0]);
                     prompt.remove();
                     notPrompt = false;
