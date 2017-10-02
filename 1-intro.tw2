@@ -7,61 +7,44 @@ You're not really supposed to be here.
 
 That's true on [[a number of levels]], of course.
 
-But given GFNAME's importance to the project, you have a little leeway.
+But with all the bustle of preparation, nobody has much time to keep track of all the D-class personnel.
 
 ::a number of levels
 The work it took to find this chamber is a story in its own right. It's clear the [[Wire Women]] didn't want people poking about in their affairs.
 
-More prosaically, the [[Director]] has forbidden access to the Gateway room outside of scheduled experiments.
+More prosaically, the [[Director]] has forbidden access to the Gateway room prior to the scheduled experiments.
 
-::Wire Women
+::Wire Women [linebyline promptsmarked]
 The Wire Women built the gateway.
 
-[
-Nobody knows how.
-]{.prompt}
+P:Nobody knows how.
 
-<%
-$(() => {
-    s.linebyline([
-        {
-            text: "The Wire Women liked to wind their bones with intricate networks of silver wires - apparently, while they were still alive.",
-            prompt: "Nobody knows how. Nobody knows why."
-        },
-        {
-            text: "The Wire Women, they say, made all the different kinds of woman that live in the world today: giant women, tiny women, women with long legs, women with many fingers, women with trunks, women who can jump high in the air or swim in the ocean.",
-            prompt: "Nobody knows how. Nobody knows why. Nobody knows when."
-        },
-        {
-            text: 'And until very recently, nobody knew [[where]].',
-            after: true
-        }
-    ]);
-});
-%>
+The Wire Women liked to wind their bones with intricate networks of silver wires - apparently, while they were still alive.
+
+P:Nobody knows how. Nobody knows why.
+
+The Wire Women, they say, made all the different kinds of woman that live in the world today: giant women, tiny women, women with long legs, women with many fingers, women with trunks, women who can jump high in the air or swim in the ocean.
+
+P:Nobody knows how. Nobody knows why. Nobody knows when.
+
+And until very recently, nobody knew [[where]].
 
 ::where
 Shortly after you arrived, once you'd signed a solemn oath to keep the secrets of the place, the [[Director]] told you that the discovery of this Gateway was the culmination of three decades of painstaking archaeorhythmical effort.
 
-She doesn't tell you the details. You don't need to know. But the suspiciously human-sized vacuum-sealed bags you passed on the way in to [[the camp]] suggest the cost was not merely monetary.
+She doesn't tell you the details. You don't need to know. But the vacuum-sealed bags you passed on the way in suggest the cost probably included more than a few [[people like you]].
 
-::Director
+::Director [linebyline]
 Tall, thin, severe; short white hair, lined brown face traced with the telltale silvery fractal patterns of the [[Wire Womens'->Wire Women]] work.
 
-[
 The pupils of her eyes are hexagons.
-]{.prompt}
 
-<%
-$(() => {
-    s.linebyline([
-        {
-            text: "Her cane is etched with letters in an ancient language, and you have no doubt she knows exactly what they mean.",
-            promptnext: true
-        },
-        {
-            text: "She moves economically, almost silently, stands stiff and straight and *always* looks you in the eye."
-        }
-    ]);
-});
-%>
+Her cane is etched with letters in an ancient language, and you have no doubt she knows exactly what they mean.
+
+She moves economically, almost silently, stands stiff and straight and *always* looks you in the eye.
+
+She's in charge of [[the facility->where]], and she will probably decide how you die.
+
+::people like you
+### Why are you disposable?
+
