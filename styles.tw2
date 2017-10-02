@@ -1,13 +1,13 @@
 ::mainstyle [stylesheet]
 body {
-    font-family: "Linux Biolinum", serif;
+    font-family: "Linux Biolinum", sans-serif;
     background-color: #312;
     color: white;
     font-size: 30px;
     text-align: center;
 }
 
-a, .prompt {
+a {
     color: #F79;
     text-decoration: none;
     font-weight: bold;
