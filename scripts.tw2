@@ -1,36 +1,70 @@
+::jquerytweak [script]
+jQuery.fn.pop = [].pop;
+jQuery.fn.shift = [].shift;
+
 ::linebyline [script]
-window.story.state.linebyline = (lines) => {
-    const prompt = $(".prompt");
-    prompt.on("click", function() {
-        if (lines.length > 0) {
-            const line = lines.shift();
-            const newPara = $(Passage.render(line.text));
-            if (line.after) {
-                prompt.after(newPara);
-            } else {
-                prompt.before(newPara);
+window.story.state.linebyline = (passage,promptsmarked) => {
+    const lines = passage.children();
+    lines.hide();
+
+    const prompt = $("<p><a id='prompt'></a></p>").appendTo(passage);
+
+    const showNextLines = () => {
+        let nextLine;
+
+        if (promptsmarked) {
+            let notPrompt = true;
+            const linesToShow = [];
+
+            while (notPrompt) {
+                nextLine = lines.shift();
+                if (nextLine !== undefined) {
+                    let nextLineText = $(nextLine).text();
+
+                    if (nextLineText.startsWith('P:')) {
+                        $('#prompt').text(nextLineText.slice(2));
+                        notPrompt = false;
+                    } else {
+                        linesToShow.push(nextLine);
+                    }
+                } else {
+                    //turn the prompt into ordinary text
+                    $("<p>"+$('#prompt').text()+"</p>").insertBefore(linesToShow[0]);
+                    prompt.remove();
+                    notPrompt = false;
+                }
             }
 
-            if (line.promptnext) {
-                prompt.text(lines[0].text)
-            } else if (line.prompt) {
-                prompt.text(line.prompt);
-            }
-            
-            if (lines.length == 0) {
-                prompt.off("click");
-                prompt.removeClass("prompt");
+            $(linesToShow).show();
+        } else {
+            nextLine = $(lines.shift());
+            nextLine.show();
+            if (lines.length === 1) {
+                prompt.remove();
+                lines.show();
+            } else {
+                $('#prompt').text($(lines[0]).text());
             }
         }
-    });
+
+        prompt.hide().fadeIn('fast');
+    }
+
+    $('#prompt').on('click',showNextLines);
+
+    showNextLines();
 }
 
 ::transitions [script]
-$('#passage').on('click', 'a[data-passage]', function(e) {
-    var destination = $(e.target).data('passage');
+$('#passage').on('click', 'a[data-passage]', (e) => {
+    const destination = $(e.target).data('passage');
         
     $('#passage').fadeOut('fast', function() {
         story.show(destination);
+        const tags = story.passage(destination).tags;
+        if (tags.includes("linebyline")) {
+            window.story.state.linebyline($('#passage'),tags.includes("promptsmarked"));
+        }
         $('#passage').fadeIn('fast');
     });
     
